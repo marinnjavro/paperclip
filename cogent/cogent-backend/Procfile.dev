@@ -1,0 +1,4 @@
+web: bin/rails server -b localhost -p 3000
+css: bin/rails tailwindcss:watch
+worker: bundle exec sidekiq -C config/sidekiq.yml
+imgproxy: IMGPROXY_BIND=127.0.0.1:8081 IMGPROXY_KEY=40bfd455ce441c8d53770322705b734a8d925f15fc2fc1994d5a0d78d34ac2ec0afc217ac7ad485888189fb090e80002ab740d82fe00f6ebe957fdced59acd75 IMGPROXY_SALT=9baa9084d598d3bb1f68ef99f7cfebd85555c8f0cd5306bb7ae26362844ee66f65b4787252ab7a16787eb185b44c24e47ba38e3fc4b8d6f8ced89e09018d2b1e IMGPROXY_ALLOWED_SOURCES="*" imgproxy

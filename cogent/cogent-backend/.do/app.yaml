@@ -1,0 +1,44 @@
+name: cogent-backend
+region: fra
+
+services:
+  - name: web
+    dockerfile_path: Dockerfile
+    github:
+      repo: marinnjavro/cogent-backend
+      branch: main
+      deploy_on_push: true
+    http_port: 8080
+    instance_size_slug: professional-xs
+    instance_count: 1
+    routes:
+      - path: /
+    health_check:
+      http_path: /health
+    run_command: bundle exec puma -C config/puma.rb -p 8080
+
+  - name: worker
+    dockerfile_path: Dockerfile
+    github:
+      repo: marinnjavro/cogent-backend
+      branch: main
+      deploy_on_push: true
+    instance_size_slug: professional-xs
+    instance_count: 1
+    run_command: bundle exec sidekiq -C config/sidekiq.yml
+
+jobs:
+  - name: migrate
+    kind: PRE_DEPLOY
+    dockerfile_path: Dockerfile
+    github:
+      repo: marinnjavro/cogent-backend
+      branch: main
+    run_command: bundle exec rails db:migrate
+
+databases:
+  - name: cogent-db
+    engine: PG
+    version: "16"
+    size: db-s-1vcpu-1gb
+    num_nodes: 1

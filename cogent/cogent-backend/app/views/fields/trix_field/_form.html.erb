@@ -1,0 +1,26 @@
+<style>
+  trix-editor {
+    height: 600px; /* Adjust this value to change the height of the editor */
+    overflow-y: auto; /* This will add a scrollbar if the content exceeds the height */
+    white-space: pre-wrap; /* This will enable text wrapping */
+  }
+  #trix-toolbar-1 {
+    display: none;
+  }
+</style>
+<script>
+  document.addEventListener('trix-change', function(event) {
+    var trixEditor = event.target;
+    var plainText = trixEditor.editor.getDocument().toString();
+    var hiddenFieldId = trixEditor.getAttribute('input');
+    var hiddenField = document.getElementById(hiddenFieldId);
+    hiddenField.value = plainText;
+  });
+</script>
+<div class="field-unit__label">
+  <%= f.label field.attribute %>
+</div>
+<div class="field-unit__field">
+  <%= f.hidden_field field.attribute, id: "x-#{field.attribute}" %>
+  <trix-editor input="x-<%= field.attribute %>"></trix-editor>
+</div>

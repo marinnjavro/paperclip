@@ -1,0 +1,106 @@
+$administrate_mobile_threshold: 500px;
+
+.app-container {
+  .navigation {
+    //display: none;
+  }
+  .main-content {
+    min-width: auto;
+  }
+
+  .collapsible {
+    padding: 20px;
+    border-bottom: #f0f0f0 solid 1px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .document-uploaded {
+    height: 2rem;
+    width: 2rem;
+  }
+  .attachments-listing > div > .as-field-edit {
+    width: 300px;
+    border: 1px solid lightgray;
+    padding: 10px;
+  }
+  .collapsible-content {
+    display: none;
+    overflow: hidden;
+  }
+  .document-functions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .field-unit--nested {
+    div.nested-fields:nth-last-child(2) hr {
+      display:none;
+    }
+    div.nested-fields:nth-last-child(3) hr {
+      display:none;
+    }
+    div.collapsible {
+      border-bottom: none;
+    }
+  }
+  .attachments-listing hr {
+    display:none;
+  }
+}
+
+@media screen and (max-width: $administrate_mobile_threshold) {
+  .main-content {
+    min-width: auto;
+    .main-content__header {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}

@@ -1,0 +1,41 @@
+// import { gql } from 'src/__generated__/gql'
+const FETCH_COGS = gql(/* GraphQL */ `
+  query fetchCogs {
+    cogs {
+      id
+      name
+      cards {
+        id
+        blockId
+        name
+        cardType
+        text
+        position
+        photoUrl
+        videoUrl
+        audioUrl
+        actions
+      }
+      blocks {
+        id
+        name
+        position
+        cards {
+          id
+          blockId
+          name
+          cardType
+          text
+          position
+          photoUrl
+          videoUrl
+          audioUrl
+          actions
+        }
+      }
+    }
+  }
+`)
+
+
+export default FETCH_COGS

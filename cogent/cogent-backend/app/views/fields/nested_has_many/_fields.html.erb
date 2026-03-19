@@ -1,0 +1,35 @@
+<div class="nested-fields">
+  <% if f.options[:parent_builder].object_name == "invoice" -%>
+    <div style="display:flex">
+      <div class="field-unit field-unit--number field-unit--optional">
+        <div class="field-unit__field">
+          <%= f.label :billable_hours %>
+          <%= f.text_field :billable_hours %>
+        </div>
+      </div>
+      <div class="field-unit field-unit--text field-unit--optional">
+        <div class="field-unit__field">
+          <%= f.label :rate_in_cents %>
+          <%= f.text_field :rate_in_cents %>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex">
+      <div class="field-unit field-unit--number field-unit--optional">
+        <div class="field-unit__field">
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+        </div>
+      </div>
+    </div>
+  <% else -%>
+    <% nested_fields_for_builder = field.nested_fields_for_builder(f) %>
+    <% nested_fields_for_builder.each do |attribute| -%>
+      <% attribute.instance_variable_set(:@attribute, :rate) if attribute.attribute == :rate_in_cents %>
+      <div class="field-unit field-unit--<%= attribute.html_class %>">
+        <%= render_field attribute, f: f %>
+      </div>
+    <% end -%>
+  <% end -%>
+  <%= link_to_remove_association I18n.t("administrate.fields.nested_has_many.remove", resource: field.associated_class_name.titleize), f %>
+</div>

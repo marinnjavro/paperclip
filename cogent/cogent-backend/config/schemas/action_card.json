@@ -1,0 +1,20 @@
+{
+  "type": "array",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "items": {
+    "type": "object",
+    "properties": {
+      "question": {
+        "type": "string"
+      },
+      "answer": {
+        "type": "boolean"
+      }
+    },
+    "required": [
+      "question", "answer"
+    ]
+  },
+  "minItems": 1,
+  "uniqueItems": false
+}

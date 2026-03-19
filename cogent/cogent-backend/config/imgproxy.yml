@@ -1,0 +1,12 @@
+development:
+  endpoint: <%= Rails.application.credentials.dig(Rails.env.to_sym, :imgproxy, :endpoint) %>
+  key: <%= Rails.application.credentials.dig(Rails.env.to_sym, :imgproxy, :key) %>
+  salt: <%= Rails.application.credentials.dig(Rails.env.to_sym, :imgproxy, :salt) %>
+staging:
+  endpoint: <%= Rails.application.credentials.dig(Rails.env.to_sym, :imgproxy, :endpoint) %>
+  key: <%= Rails.application.credentials.dig(Rails.env.to_sym, :imgproxy, :key) %>
+  salt: <%= Rails.application.credentials.dig(Rails.env.to_sym, :imgproxy, :salt) %>
+production:
+  endpoint: <%= Rails.application.credentials.dig(Rails.env.to_sym, :imgproxy, :endpoint) %>
+  key: <%= Rails.application.credentials.dig(Rails.env.to_sym, :imgproxy, :key) %>
+  salt: <%= Rails.application.credentials.dig(Rails.env.to_sym, :imgproxy, :salt) %>

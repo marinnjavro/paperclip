@@ -1,0 +1,18 @@
+<nav class="top-navigation">
+  <div class="top-navigation-logo">
+    <%#= image_tag 'logo.png', style: "height: 100px" %>
+  </div>
+  <div class="top-navigation-login">
+    <% if signed_in? %>
+      <div class="top-navigation-login-email">
+        <%= current_user&.email %>
+        <%#= link_to current_user.email, edit_admin_profile_path(current_user.id) %>
+      </div>
+      <div class="top-navigation-login-button">
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+      </div>
+    <% else %>
+        <%= link_to "Sign in", sign_in_path %>
+    <% end %>
+  </div>
+</nav>
