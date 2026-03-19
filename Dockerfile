@@ -58,4 +58,4 @@ ENV NODE_ENV=production \
 # VOLUME ["/paperclip"]  # Removed for Railway compatibility — use Railway volumes instead
 EXPOSE 3100
 
-CMD ["sh", "-c", "chown -R node:node /paperclip && exec su -s /bin/sh node -c 'node --import ./server/node_modules/tsx/dist/loader.mjs server/dist/index.js'"]
+CMD ["sh", "-c", "chown -R node:node /paperclip && su -s /bin/sh node -c 'mkdir -p /paperclip/instances/default/logs && npx paperclipai onboard --yes 2>/dev/null; exec node --import ./server/node_modules/tsx/dist/loader.mjs server/dist/index.js'"]
