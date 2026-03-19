@@ -58,4 +58,7 @@ ENV NODE_ENV=production \
 # VOLUME ["/paperclip"]  # Removed for Railway compatibility — use Railway volumes instead
 EXPOSE 3100
 
-CMD ["sh", "-c", "chown -R node:node /paperclip && su -s /bin/sh node -c 'mkdir -p /paperclip/instances/default/logs && npx paperclipai onboard --yes 2>/dev/null; exec node --import ./server/node_modules/tsx/dist/loader.mjs server/dist/index.js'"]
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
+CMD ["/docker-entrypoint.sh"]
