@@ -9,6 +9,8 @@ import {
   SquarePen,
   Network,
   Settings,
+  GraduationCap,
+  BookOpen,
 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { SidebarSection } from "./SidebarSection";
@@ -98,6 +100,11 @@ export function Sidebar() {
         <SidebarSection label="Work">
           <SidebarNavItem to="/issues" label="Issues" icon={CircleDot} />
           <SidebarNavItem to="/goals" label="Goals" icon={Target} />
+        </SidebarSection>
+
+        <SidebarSection label="AI School">
+          <SidebarNavItem to="/yoda" label="Yoda Dashboard" icon={GraduationCap} />
+          <SidebarNavItem to="/school/onboarding" label="Student Onboarding" icon={BookOpen} />
         </SidebarSection>
 
         <SidebarProjects />
