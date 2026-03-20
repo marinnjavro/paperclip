@@ -1,8 +1,6 @@
 import type { ReactNode } from "react";
-import { useBreadcrumbs } from "../hooks/useBreadcrumbs";
 
 export function TeamGuide() {
-  useBreadcrumbs([{ label: "Team Guide" }]);
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-10 space-y-10">
