@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { useBreadcrumbs } from "../hooks/useBreadcrumbs";
 
 export function TeamGuide() {
@@ -243,7 +244,7 @@ function Section({
   children,
 }: {
   title: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <section className="space-y-3">
